@@ -14,6 +14,7 @@ This project demonstrates a multilingual landing page implementation using HonoX
 - Responsive design with TailwindCSS
 - Static site generation for optimal performance
 - Clean URL structure with language paths (/en/, /ja/)
+- Language switcher component
 
 ## How it Works
 
@@ -43,20 +44,27 @@ app/
 ├── server.ts             # Server-side configuration
 ├── global.d.ts           # TypeScript declarations
 ├── style.css             # Global styles
+├── components/           # Reusable components
+│   └── LanguageSwitcher.tsx # Language switcher component
+├── islands/              # Interactive components (HonoX islands)
 ├── lib/                  # Utility libraries
 │   ├── i18n/             # Internationalization support
 │   │   ├── index.ts      # Translation utility functions
-│   │   └── locales/      # Translation files (en.json, ja.json)
+│   │   └── locales/      # Translation files
+│   │       ├── en.json   # English translations
+│   │       └── ja.json   # Japanese translations
 │   └── utils/            # General utility functions
-├── routes/               # Application routes
-│   ├── index.tsx         # Root route handler
-│   ├── _middleware.ts    # Language detection middleware
-│   ├── _404.tsx          # Custom 404 page
-│   ├── _error.tsx        # Error handling
-│   ├── _renderer.tsx     # Custom renderer
-│   └── [lang]/           # Dynamic language routes
-│       └── index/        # Landing page for each language
-└── islands/              # Interactive components (HonoX islands)
+│       └── index.ts      # Utility functions
+└── routes/               # Application routes
+    ├── index.tsx         # Root route handler
+    ├── _middleware.ts    # Language detection middleware
+    ├── _404.tsx          # Custom 404 page
+    ├── _error.tsx        # Error handling
+    ├── _renderer.tsx     # Custom renderer
+    ├── style.css         # Route-specific styles
+    └── [lang]/           # Dynamic language routes
+        ├── index/        # Landing page for each language
+        └── about/        # About page for each language
 ```
 
 ## Getting Started
@@ -68,8 +76,12 @@ app/
 ## Adding a New Language
 1. Add the language code to the supported languages array in `app/lib/i18n/index.ts`
 2. Create a new translation file in `app/lib/i18n/locales/[lang-code].json`
+3. Add the language display name to the `displayLang` object in `app/components/LanguageSwitcher.tsx`
 
 ## Deployment
 This project is configured for deployment on Cloudflare Pages. Connect your repository to Cloudflare Pages and configure the build settings as follows:
 - Build command: `pnpm run build`
 - Build output directory: `dist`
+
+## Note
+- PostCSS is required to apply TailwindCSS for HonoX (SSG).
