@@ -3,8 +3,6 @@ import { getRoutePathsInLanguage } from '@/lib/utils'
 
 const app = new Hono()
 
-console.log(getRoutePathsInLanguage())
-
 getRoutePathsInLanguage().forEach(route => {
   app.get(route.path, (c) => {
     const path = route.path === '/' ? '' : route.path
