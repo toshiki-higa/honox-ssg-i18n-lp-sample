@@ -1,10 +1,10 @@
 {
-  "Home": {
-    "title": "Landing Page",
-    "description": "This is a landing page"
-  },
-  "About": {
-    "title": "About",
-    "description": "This is a about page"
-  }
+	"Home": {
+		"title": "Landing Page",
+		"description": "This is a landing page"
+	},
+	"About": {
+		"title": "About",
+		"description": "This is a about page"
+	}
 }
