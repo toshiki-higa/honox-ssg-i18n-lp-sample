@@ -28,13 +28,16 @@ export default defineConfig(({ mode }) => {
 			},
 			plugins: [client()],
 		};
-	} else {
-		return {
-			...common,
-			build: {
-				emptyOutDir: false,
-			},
-			plugins: [honox(), ssg({ entry })],
-		};
 	}
+	
+	return {
+		...common,
+		build: {
+			emptyOutDir: false,
+		},
+		plugins: [
+			honox(),
+			ssg({ entry })
+		],
+	};
 });
